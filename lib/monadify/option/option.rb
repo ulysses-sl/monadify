@@ -1,5 +1,5 @@
 # use:  Option.from {  execute block  }
-module Monadify::Option
+class Monadify::Option
   def self.from
     begin
       val = yield
@@ -13,4 +13,3 @@ module Monadify::Option
     end
   end
 end
-

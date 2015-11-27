@@ -11,7 +11,7 @@ class Monadify::Some < Monadify::Option
 
   def map
     begin
-      return_val = yield(value)
+      return_val = yield value
       if return_val.nil?
         Monadify::None.new
       else
@@ -24,7 +24,7 @@ class Monadify::Some < Monadify::Option
 
   def flatmap
     begin
-      return_option = yield(value)
+      return_option = yield value
       if return_option.empty?
         Monadify::None.new
       else
