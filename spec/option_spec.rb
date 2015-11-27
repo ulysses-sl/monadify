@@ -19,7 +19,7 @@ describe Monadify::Option do
 
     context 'Option from expression that raise exceptions' do
       it 'should return None' do
-        result = Monadify::Option.from { 2 + '2' }
+        result = Monadify::Option.from { raise "I raise exception." }
         expect(result).to be_a(Monadify::None)
       end
     end

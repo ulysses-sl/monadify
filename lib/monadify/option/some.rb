@@ -17,6 +17,8 @@ class Monadify::Some < Monadify::Option
       else
         Monadify::Some.new(return_val)
       end
+    rescue ArgumentError, NameError, TypeError
+      raise
     rescue
       Monadify::None.new
     end
@@ -25,11 +27,19 @@ class Monadify::Some < Monadify::Option
   def flatmap
     begin
       return_option = yield value
-      if return_option.empty?
-        Monadify::None.new
-      else
-        Monadify::Some.new(return_option.value)
+      if return_option.is_a? Monadify::Option
+        if return_option.empty?
+          Monadify::None.new
+        else
+          Monadify::Some.new(return_option.value)
+        end
+      elsif
+        raise NotAnOptionError
       end
+    rescue NotAnOptionError
+      raise ArgumentError, 'The block should return an Option'
+    rescue ArgumentError, NameError, TypeError
+      raise
     rescue
       Monadify::None.new
     end

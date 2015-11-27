@@ -6,6 +6,8 @@ class Monadify::None < Monadify::Option
   def map
     begin
       yield nil
+    rescue ArgumentError, NameError, TypeError
+      raise
     rescue
     end
     self
@@ -14,6 +16,10 @@ class Monadify::None < Monadify::Option
   def flatmap
     begin
       yield nil
+    rescue NotAnOptionError
+      raise ArgumentError, 'The block should return an Option'
+    rescue ArgumentError, NameError, TypeError
+      raise
     rescue
     end
     self

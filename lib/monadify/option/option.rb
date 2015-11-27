@@ -8,6 +8,8 @@ class Monadify::Option
       else
         Monadify::Some.new(val)
       end
+    rescue ArgumentError, NameError, TypeError
+      raise
     rescue
       Monadify::None.new
     end
