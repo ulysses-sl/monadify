@@ -1,3 +1,5 @@
+class NotAnOptionError < TypeError; end
+
 class Monadify::Some < Monadify::Option
   attr_reader :value
 
@@ -27,13 +29,13 @@ class Monadify::Some < Monadify::Option
   def flatmap
     begin
       return_option = yield value
-      if return_option.is_a? Monadify::Option
-        if return_option.empty?
-          Monadify::None.new
-        else
-          Monadify::Some.new(return_option.value)
-        end
-      elsif
+      case return_option
+      when Monadify::None
+        return_option
+      when Monadify::Some
+        Monadify::Some.new(return_option.value)
+      # when the yield value succeeds?
+      else
         raise NotAnOptionError
       end
     rescue NotAnOptionError

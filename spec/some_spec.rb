@@ -19,14 +19,44 @@ describe Monadify::Some do
       end
     end
 
-    context 'from expression that raise exceptions' do
+    context 'from expression that raise special types of errors' do
+      it 'should raise the exception' do
+        expect { subject.map { |el| el.concat(String) } }.to raise_error(TypeError)
+      end
+    end
+
+    # This spec is not passing. map raises NoMethodError here
+    context 'from expression that raise other exceptions' do
       it 'should return None' do
-        result = subject.map(&:*)
+        result = subject.map { |el| el^2 }
         expect(result).to be_a(Monadify::None)
       end
     end
   end
 
   describe 'flatmap' do
+    context 'from successful expression' do
+      it 'should return Some' do
+        pending
+      end
+    end
+
+    context 'from expression that is not an option' do
+      it 'should return None' do
+        pending
+      end
+    end
+
+    context 'from expression that raise special types of errors' do
+      it 'should raise the exception' do
+        pending
+      end
+    end
+
+    context 'from expression that raise other exceptions' do
+      it 'should return None' do
+        pending
+      end
+    end
   end
 end
