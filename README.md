@@ -1,6 +1,6 @@
 # Monadify
 
-NOTE: In beta development
+NOTE: In alpha development
 
 TODO: Delete this and the text above, and describe your gem
 
