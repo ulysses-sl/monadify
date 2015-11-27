@@ -34,7 +34,6 @@ class Monadify::Some < Monadify::Option
         return_option
       when Monadify::Some
         Monadify::Some.new(return_option.value)
-      # when the yield value succeeds?
       else
         raise NotAnOptionError
       end
