@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['mail@saklee.net', 'mail@linhbui.me']
 
   spec.summary       = %q{Bringing Functional Monads to Ruby}
-  spec.description   = %q{Options}
+  spec.description   = %q{in beta}
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = 'MIT'
 
