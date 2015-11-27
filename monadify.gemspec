@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['mail@saklee.net', 'mail@linhbui.me']
 
   spec.summary       = %q{Bringing Functional Monads to Ruby}
-  spec.description   = %q{in alpha}
+  spec.description   = %q{In alpha development. Currently only Option is implemented.}
   spec.homepage      = 'https://github.com/ulysses-sl/monadify'
   spec.license       = 'MIT'
 
